@@ -1,0 +1,31 @@
+<h1>Processing Details : {{media_id}}</h1>
+<a href="{% url 'main' %}">Home</a>
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Original</th>
+        <th>Processed</th>
+        <th>Choice</th>
+
+    </tr>
+    {% if media_id %}
+    <tr>
+        <td>
+            ID_{{media_id.id}}
+        </td>
+        <td>
+            {% load static %}
+            <img src="{% static media_id.image %}" height="400px" width="500px" alt="Original Image">
+        </td>
+        <td>
+            {% load static %}
+            <img src="{% static media_id.modified_image %}" height="400px" width="500px" alt="Modified Image">
+        </td>
+        <td>
+            <b><span>Type :</span><span style="color:red"> {{media_id.choice}}</span></b>
+        </td>
+    </tr>
+    {% else %}
+    <h1>Object is Empty</h1>
+    {% endif %}
+</table>

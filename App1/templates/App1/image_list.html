@@ -1,0 +1,39 @@
+<h1>Hey Hey Welcome To the Basic App Which Is Computer Vision and Detection</h1>
+<h2>Lets Start Surfing : <br> 
+    <a href="{% url 'upload' %}">Click to add Image Processing!</a>
+</h2>
+{%if media %}
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Original</th>
+        <th>Processed</th>
+        <th></th>
+        <th></th>
+    </tr>
+    {% for pic in media %}
+    <tr>
+        <td>
+            {{pic.id}}
+        </td>
+        <td>
+            {% load static %}
+            <img src="{% static pic.image %}" height="200px" width="200px" alt="Original Image">
+        </td>
+
+        <td>
+            <a href="{% url 'detail' pic.id %}">See Details</a>
+        </td>
+        <td>
+            <a href="{% url 'edit' pic.id %}">Edit Task</a>
+        </td>
+        <td>
+            <a href="{% url 'delete' pic.id %}">Delete Task</a>
+        </td>
+    </tr>
+    {% endfor %}
+    
+{% else %}
+   <h1>Object is Empty</h1>
+{% endif %}
+</table>
